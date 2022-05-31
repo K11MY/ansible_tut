@@ -4,11 +4,12 @@
     tasks:
       - name: install apache2 package
         apt: 
-          name: install apache2 and libapache
+          name:
            - apache2
            - libapache2-mod-php
           update_cache: yes
         when: ansible_distribution == "Ubuntu"
+      
       - name: install httpd and php packages
         dnf: 
           name: 
