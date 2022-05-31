@@ -8,21 +8,17 @@
         when: ansible_distribution  == "Ubuntu"
       - name: install apache2 package
         apt: 
-          name: apache2
-        when: ansible_distribution  == "Ubuntu"
-      - name: add php support for apache
-        apt: 
-          name: libapache2-mod-php
+          name: 
+           - apache2
+           - libapache2-mod-php
       - name: update repo index
         dnf: 
           update_cache: yes
         when: ansible_distribution == "CentOS"
-      - name: install apache2 package
+      - name: install httpd and php packages
         dnf: 
-          name: apache2
-        when: ansible_distribution  == "CentOS"
-      - name: add php support for apache
-        dnf: 
-          name: libapache2-mod-php
+          name: 
+           - httpd
+           - php 
         when: ansible_distribution  == "CentOS"
 
