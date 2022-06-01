@@ -5,6 +5,7 @@
    tasks:
 
    - name: install updates (CentOS)
+     tags: always
      dnf:
       update_only: yes 
       update_cache: yes 
@@ -18,8 +19,8 @@
 
  - hosts: web_servers
    become: true
-   tasks: 
    - name: install apache and php for Ubuntu servers
+     tags: apache,apache2,ubuntu
      apt:
        name:
          - apache2
