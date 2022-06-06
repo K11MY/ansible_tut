@@ -10,6 +10,14 @@
       update_only: yes 
       update_cache: yes 
      when: ansible_distribution == "CentOS"
+   
+   - name install updates (RHEL 7) 
+     yum: 
+      update_only: yes 
+      update_cache: yes 
+     when: 
+       - ansible_distribution == "CentOS"
+       - ansible_distribution_version  == "7"
 
    - name: install updates (Ubuntu)
      tags: always
@@ -17,6 +25,23 @@
       upgrade: dist 
       update_cache: yes 
      when: ansible_distribution == "Ubuntu"
+
+ - hosts: workstations
+   become: true 
+   tasks: 
+   - name: install unzip
+     package: 
+       name: unzip 
+
+   - name: install terraform 
+     unarchive: 
+       src: https://release.hashicorp.com/terraform/0.12.28_linux_amd64.zip
+       dest: /usr/local/bin 
+       remote_src: yes 
+       mode: 0755 
+       owner: root
+       group: root
+
 
  - hosts: web_servers
    become: true
