@@ -35,7 +35,7 @@
 
    - name: install terraform 
      unarchive: 
-       src: https://release.hashicorp.com/terraform/0.12.28_linux_amd64.zip
+       src: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
        dest: /usr/local/bin 
        remote_src: yes 
        mode: 0755 
